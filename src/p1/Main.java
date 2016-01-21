@@ -5,27 +5,15 @@ import java.util.Scanner;
 //Chungsing Arguello
 //Sandwhich menu
 //CSC 164
+
 public class Main {
 
     public static void main(String[] args) {
-	    /*
-            print hello message
-        do while loop
-            present menu
-            ask for user input
-                switch on user input
-            get price
-            print choice and price
-            end switch
-        End loop
-        ---------------------
-        switch(int expression)
-        string choice = input.next();b
-        char option = choice.charAt(0);
-        */
 
         Scanner input = new Scanner(System.in);
         char option;
+        double price;
+        String sandwich = "";
 
         System.out.println("Welcome to SANDTASTIC SUBS\n");
 
@@ -37,13 +25,44 @@ public class Main {
             System.out.println("(D)one\n");
             System.out.print("Enter your choice: ");
 
-            // get user input and convert to upper case
-            String choice = input.next();
-            choice = choice.toUpperCase();
-            option = choice.charAt(0);
+            // Get user input,convert to upper case and get first character
+            option = input.next().toUpperCase().charAt(0);
 
-            // get the first character of the user input
-            System.out.println("choice = " + choice + "\noption = " + option);
+           switch (option){
+               case 'H':
+                   price = 5.50;
+                   sandwich = "Ham";
+                   break;
+
+               case 'R':
+                   price = 6.00;
+                   sandwich = "Roast Beef";
+                   break;
+
+               case 'S':
+                   price = 4.00;
+                   sandwich = "Salami";
+                   break;
+
+               case 'T':
+                   price = 4.50;
+                   sandwich = "Tuna";
+                   break;
+
+               case 'D':
+                   price = 0;
+                   sandwich = "None";
+                   break;
+
+               default:
+                   price = 0;
+                   System.out.println("option " + option + " is not available");
+           }
+            // Give the user the order information,, if valid order
+            if (price != 0) {
+                System.out.printf(sandwich + " sandwich " + "cost: $%.2f", price);
+                System.out.println("\n");
+            }
 
         }while (option != 'D');
 
